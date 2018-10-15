@@ -1,5 +1,5 @@
 setlocal EnableDelayedExpansion
-SET COMMIT=%time:~0,8%-%COMPUTERNAME%-%USERNAME%
+SET COMMIT=%time:~0,8%-strieszp
 for /L %%i in (1,0,2) do (
 git add .
 git commit -am "%COMMIT%"
