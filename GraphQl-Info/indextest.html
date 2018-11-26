@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <button class="graphql-test">CLICK</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            $('.graphql-test').on('click', function(e){
+
+            fetch('https://rrrz55p4vn.lp.gql.zone/graphql/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+              body: JSON.stringify({query: "{ Temperatur }"})
+            })
+              .then(r => r.json())
+              .then(data => console.log('data returned:', data));
+            })
+        });
+    </script>
+</html>
