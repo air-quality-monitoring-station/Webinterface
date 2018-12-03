@@ -42,14 +42,14 @@ function InfoData()
         InfoOut();
     }else{
 
-        $.getJSON("https://erebos.xyz/api/graphiql?query=%7BaMessdaten(Datum%3A%222018-11-29%22)%7BUID%2CTemperatur%2CLuftdruck%2CLuftfeuchtigkeit%2CVOC%2CFEINSTAUBPM100%2CEINSTAUBPM25%2CDatumZeit%7D%7D&callback=?", function(data) {
+        $.getJSON("https://erebos.xyz/api/graphql?query=%7BaMessdaten(Datum%3A%222018-11-29%22)%7BUID%2CTemperatur%2CLuftdruck%2CLuftfeuchtigkeit%2CVOC%2CFEINSTAUBPM100%2CEINSTAUBPM25%2CDatumZeit%7D%7D", function(data) {
             //is online
             online = true;
 
         }).done(function(json) {
             //public IPs
             //try if it is possible to give the preferred info
-            infocard = $('<span class="text-success">').append($('<i class="fa fa-long-arrow-down">').text(json.UID));;
+            infocard = $('<span class="text-success">').append($('<i class="fa fa-long-arrow-down">').text(json.aMessdaten.UID));
             InfoOut();
             online = true;
         }).fail(function() {
