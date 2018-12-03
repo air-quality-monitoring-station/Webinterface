@@ -1,0 +1,12 @@
+{
+    "data":
+    {
+        "Temperatur":"21",
+        "Luftdruck":"454",
+        "Luftfeuchtigkeit":"345",
+        "VOC":"76.463",
+        "Feinstaub_PM100":"6.354",
+        "Feinstaub_PM25":"2.1111",
+        "Timestamp":"2018-12-03 10:45:00.000000",
+    }
+}
