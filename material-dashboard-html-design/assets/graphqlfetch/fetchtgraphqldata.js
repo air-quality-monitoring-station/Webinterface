@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     online = true;
-    infocard = true;
+
     var oldpuip;
     var oldprip;
     var oldpdnsip;
@@ -34,24 +34,26 @@ function re()
 
 function InfoData()
 {
-
-    //check if there is a connection to the Internet
-    if(!navigator.onLine){
-        alert("There is something wrong!");
-        online = false;
-        InfoOut();
-    }else{
-
-        $.getJSON("https://erebos.xyz/api/graphql?query=%7BaMessdaten(Datum%3A%222018-11-29%22)%7BUID%2CTemperatur%2CLuftdruck%2CLuftfeuchtigkeit%2CVOC%2CFEINSTAUBPM100%2CEINSTAUBPM25%2CDatumZeit%7D%7D", function(data) {
+        $.getJSON("https://erebos.xyz/api/graphiql?query=%7BaMessdaten(Datum%3A%222018-12-05%22)%7BUID%2CTemperatur%2CLuftdruck%2CLuftfeuchtigkeit%2CVOC%2CFEINSTAUBPM100%2CFEINSTAUBPM25%2CDatumZeit%7D%7D", function(data) {
             //is online
             online = true;
+            //alert("test")
 
         }).done(function(json) {
-            //public IPs
-            //try if it is possible to give the preferred info
-            infocard = $('<span class="text-success">').append($('<i class="fa fa-long-arrow-down">').text(json.aMessdaten.UID));
+  					// console.log('data returned:', json.data.aMessdaten);
+					  // alert(json.data.aMessdaten.UID);
+					  // UID = json.data.aMessdaten.UID;
+					  // Temperatur = json.data.aMessdaten.Temperatur;
+					  // Luftdruck = json.data.aMessdaten.Luftdruck;
+					  // Luftfeuchtigkeit = json.data.aMessdaten.Luftfeuchtigkeit;
+					  // VOC = json.data.aMessdaten.VOC;
+					  // FEINSTAUBPM25 = json.data.aMessdaten.FEINSTAUBPM25
+					  // FEINSTAUBPM100 = json.data.aMessdaten.FEINSTAUBPM100
+					  // DatumZeit = json.data.aMessdaten.DatumZeit
+
+            infocard = $('<span class="text-success">').append($('<i class="fa fa-long-arrow-down">').text(json.data.aMessdaten.Temperatur + " decrease in VOC"));
             InfoOut();
-            online = true;
+
         }).fail(function() {
             /*if (oldpuip === undefined){
                 //altanativ info
@@ -64,7 +66,7 @@ function InfoData()
         }).always(function() {
             //alert( "complete" );
         });
-    }
+
 
     //local IPs
 
